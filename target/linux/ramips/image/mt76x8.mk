@@ -822,12 +822,19 @@ define Device/zbtlink_zbt-we1226
 endef
 TARGET_DEVICES += zbtlink_zbt-we1226
 
-define Device/ikt_m64
+define Device/ikt_qdk101
   IMAGE_SIZE := 16064k
   DEVICE_VENDOR := ikt
-  DEVICE_MODEL := m64
+  DEVICE_MODEL := qdk101
 endef
-TARGET_DEVICES += ikt_m64
+TARGET_DEVICES += ikt_qdk101
+
+define Device/ikt_qdk102
+  IMAGE_SIZE := 16064k
+  DEVICE_VENDOR := ikt
+  DEVICE_MODEL := qdk102
+endef
+TARGET_DEVICES += ikt_qdk102
 
 define Device/zyxel_keenetic-extra-ii
   IMAGE_SIZE := 14912k
