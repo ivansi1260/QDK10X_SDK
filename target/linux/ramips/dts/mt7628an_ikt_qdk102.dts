@@ -4,14 +4,14 @@
 #include <dt-bindings/gpio/gpio.h>
 
 / {
-	compatible = "ikt,m64", "mediatek,mt7628an-soc";
-	model = "m64";
+	compatible = "ikt,qdk102", "mediatek,mt7628an-soc";
+	model = "qdk102";
 
 	aliases {
-		led-boot = &led_wlan;
-		led-failsafe = &led_wlan;
-		led-running = &led_wlan;
-		led-upgrade = &led_wlan;
+		led-boot = &led_sys;
+		led-failsafe = &led_sys;
+		led-running = &led_sys;
+		led-upgrade = &led_sys;
 	};
 
 	chosen {
@@ -26,24 +26,32 @@
 			gpios = <&gpio 38 GPIO_ACTIVE_LOW>;
 			linux,code = <KEY_RESTART>;
 		};
-		sim {
-			label = "BTN_0";
-			gpios = <&gpio 11 1>; //gpio11 
+		sim1 {
+			label = "sim1_det";
+			gpios = <&gpio 4 1>; //gpio4 
 			linux,code = <0x100>;
-			
+		};
+		sim2 {
+			label = "sim2_det";
+			gpios = <&gpio 11 1>; //gpio11 
+			linux,code = <0x101>;
 		};
 	};
 
 	leds {
 		compatible = "gpio-leds";
 
-		led_wlan: wifi {
-			label = "m64:wifi";
+		led_sys:sys_run {
+			label = "qdk102:sys";
 			gpios = <&gpio 44 0>; //gpio44
 		};
-		lte {
-			label = "m64:lte";
-			gpios = <&gpio 0 1>; //gpio1
+		led_lte {
+			label = "qdk102:lte";
+			gpios = <&gpio 0 1>; //gpio0
+		};
+		led_net {
+			label = "qdk102:net";
+			gpios = <&gpio 5 1>; //gpio5
 		};
 	};
 
@@ -56,6 +64,12 @@
                         gpio-export,name = "modem-pwr";
                         gpio-export,output = <1>;
                         gpios = <&gpio 3 GPIO_ACTIVE_HIGH>;
+                };
+                
+		sim-ctl {
+                        gpio-export,name = "sim-switch";
+                        gpio-export,output = <1>;
+                        gpios = <&gpio 1 GPIO_ACTIVE_HIGH>;
                 };
         };
 
@@ -82,6 +96,14 @@
 	p4led_an{
 				ralink,group = "p4led_an";
 				ralink,function = "p4led_an";
+	};
+	p3led_an{
+				ralink,group = "p3led_an";
+				ralink,function = "p3led_an";
+	};
+	p2led_an{
+				ralink,group = "p2led_an";
+				ralink,function = "p2led_an";
 	};
 	p1led_an{
 				ralink,group = "p1led_an";

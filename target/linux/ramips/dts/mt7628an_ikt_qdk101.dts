@@ -8,10 +8,10 @@
 	model = "qdk101";
 
 	aliases {
-		led-boot = &led_wlan;
-		led-failsafe = &led_wlan;
-		led-running = &led_wlan;
-		led-upgrade = &led_wlan;
+		led-boot = &led_sys;
+		led-failsafe = &led_sys;
+		led-running = &led_sys;
+		led-upgrade = &led_sys;
 	};
 
 	chosen {
@@ -37,8 +37,8 @@
 	leds {
 		compatible = "gpio-leds";
 
-		led_wlan: wifi {
-			label = "qdk101:wifi";
+		led_sys: sys_run {
+			label = "qdk101:sys";
 			gpios = <&gpio 44 0>; //gpio44
 		};
 		lte {
